@@ -1,14 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-class Coords {
-  @Column()
-  lat: string;
-  @Column()
-  long: string;
-}
-
-@Entity()
 export class Place {
   @PrimaryGeneratedColumn()
   id: number;
@@ -20,11 +12,8 @@ export class Place {
   description: string;
 
   @Column()
-//   coords: Coords;
+  lat: number;
 
-    @Column()
-    lat: string;
-
-    @Column()
-    long: string;
+  @Column()
+  long: number;
 }

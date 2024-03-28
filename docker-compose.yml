@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  nest-mysql-docker:
+    build: .
+    ports:
+      - '3000:3000'  
+    depends_on:
+      - mysql_db
+
+  mysql_db:
+    image: mysql:latest
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'test'
+      MYSQL_TCP_PORT: 3306

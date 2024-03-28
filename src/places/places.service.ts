@@ -3,10 +3,14 @@ import { CreatePlaceDto } from './dto/create-place.dto';
 import { UpdatePlaceDto } from './dto/update-place.dto';
 import { Place } from './entities/place.entity';
 import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class PlacesService {
-  constructor(private placesRepository: Repository<Place>) {}
+  constructor(
+    @InjectRepository(Place)
+    private placesRepository: Repository<any>,
+  ) {}
 
   async findAll(): Promise<Place[]> {
     return this.placesRepository.find();
@@ -15,7 +19,7 @@ export class PlacesService {
   async findOne(id: number): Promise<Place> {
     const place = await this.placesRepository.findOneBy({ id });
     if (!place) {
-      throw new NotFoundException(`Place with ID ${id} is `);
+      throw new NotFoundException(`Place with ID ${id} is not created`);
     }
     return place;
   }

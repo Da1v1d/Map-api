@@ -11,7 +11,6 @@ import { PlacesService } from './places.service';
 import { CreatePlaceDto } from './dto/create-place.dto';
 import { UpdatePlaceDto } from './dto/update-place.dto';
 import { PlaceDto } from './dto/place.dto';
-
 @Controller('places')
 export class PlacesController {
   constructor(private readonly placesService: PlacesService) {}
